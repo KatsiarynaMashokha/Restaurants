@@ -5,21 +5,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
     tools:context="com.epicodus.myrestaurants.ui.RestaurantsActivity">
 
     <TextView
-        android:id="@+id/location_zip"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50px"
+        android:layout_alignParentTop="true"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <ListView
-        android:id="@+id/restaurants_list_view"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200px"
-        android:minHeight="15px">
-    </ListView>
+        android:layout_centerHorizontal="true"
+        android:id="@+id/location_zip"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+   />
 
 </RelativeLayout>

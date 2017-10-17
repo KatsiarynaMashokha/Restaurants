@@ -33,7 +33,7 @@ public class RestaurantActivityInstrumentationTest {
         View activityDecorView = activityTestRule.getActivity().getWindow().getDecorView();
         String restaurantName = "Mi Mero Mole";
         onData(anything())
-                .inAdapterView(withId(R.id.restaurants_list_view))
+                .inAdapterView(withId(R.id.recycler_view))
                 .atPosition(0)
                 .perform(click());
 

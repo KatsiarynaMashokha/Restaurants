@@ -29,7 +29,7 @@ public class RestaurantActivityTest {
     @Before
     public void setUp() throws Exception {
         activity = Robolectric.setupActivity(RestaurantsActivity.class);
-        mRestaurantListView = (ListView) activity.findViewById(R.id.restaurants_list_view);
+        mRestaurantListView = (ListView) activity.findViewById(R.id.recycler_view);
     }
 
     @Test
