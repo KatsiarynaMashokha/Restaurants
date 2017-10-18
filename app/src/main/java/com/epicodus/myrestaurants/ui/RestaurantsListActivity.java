@@ -21,8 +21,8 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 
-public class RestaurantsActivity extends AppCompatActivity {
-    public static final String TAG = RestaurantsActivity.class.getSimpleName();
+public class RestaurantsListActivity extends AppCompatActivity {
+    public static final String TAG = RestaurantsListActivity.class.getSimpleName();
     private RestaurantListAdapter mAdapter;
     @Bind(R.id.recycler_view) RecyclerView mRecyclerView;
     public ArrayList<Restaurant> restaurants = new ArrayList<>();
@@ -50,13 +50,13 @@ public class RestaurantsActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
                 restaurants = yelpService.processResult(response);
 
-                RestaurantsActivity.this.runOnUiThread(new Runnable() {
+                RestaurantsListActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         mAdapter = new RestaurantListAdapter(getApplicationContext(), restaurants);
                         mRecyclerView.setAdapter(mAdapter);
                         RecyclerView.LayoutManager layoutManager =
-                                new LinearLayoutManager(RestaurantsActivity.this);
+                                new LinearLayoutManager(RestaurantsListActivity.this);
                         mRecyclerView.setLayoutManager(layoutManager);
                         mRecyclerView.setHasFixedSize(true);
                     }

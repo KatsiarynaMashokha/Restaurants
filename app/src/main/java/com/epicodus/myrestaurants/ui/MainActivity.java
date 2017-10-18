@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v == mFindRestaurantsButton) {
             String location = mZipCode.getText().toString();
-            Intent restaurantIntent = new Intent(MainActivity.this, RestaurantsActivity.class);
+            Intent restaurantIntent = new Intent(MainActivity.this, RestaurantsListActivity.class);
             restaurantIntent.putExtra("locationZipCode", location);
             startActivity(restaurantIntent);
         }

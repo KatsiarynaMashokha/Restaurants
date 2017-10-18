@@ -9,7 +9,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
-    tools:context="com.epicodus.myrestaurants.ui.RestaurantsActivity">
+    tools:context="com.epicodus.myrestaurants.ui.RestaurantsListActivity">
 
     <TextView
         android:layout_alignParentTop="true"
