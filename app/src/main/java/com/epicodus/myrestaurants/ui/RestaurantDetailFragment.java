@@ -10,9 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.epicodus.myrestaurants.Constants;
 import com.epicodus.myrestaurants.R;
 import com.epicodus.myrestaurants.models.Restaurant;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -36,8 +40,6 @@ public class RestaurantDetailFragment extends Fragment implements View.OnClickLi
     @Bind(R.id.saveRestaurantButton) TextView mSaveRestaurantButton;
 
     private Restaurant mRestaurant;
-
-
 
     public RestaurantDetailFragment() {
         // Required empty public constructor
@@ -82,6 +84,8 @@ public class RestaurantDetailFragment extends Fragment implements View.OnClickLi
         mPhoneLabel.setText(mRestaurant.getPhone());
         mAddressLabel.setText(android.text.TextUtils.join(", ", mRestaurant.getAddress()));
 
+        mSaveRestaurantButton.setOnClickListener(this);
+
         return view;
     }
 
@@ -103,6 +107,13 @@ public class RestaurantDetailFragment extends Fragment implements View.OnClickLi
                             + "," + mRestaurant.getLongitude()
                             + "?q=(" + mRestaurant.getName() + ")"));
             startActivity(mapIntent);
+        }
+        if(v == mSaveRestaurantButton) {
+            DatabaseReference restaurantRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_RESTAURANTS);
+            restaurantRef.push().setValue(mRestaurant);
+            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -15,10 +15,12 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private static final String LOG_TAG = MainActivity.class.getSimpleName();
+    private static final String TAG = MainActivity.class.getSimpleName();
+
     @Bind(R.id.findRestaurantsButton) Button mFindRestaurantsButton;
     @Bind (R.id.textView) TextView mAppNameTextView;
     @Bind (R.id.zipcode) EditText mZipCode;
+    @Bind(R.id.savedRestaurantsButton) Button mSavedRestaurantsButton;
 
 
     @Override
@@ -31,15 +33,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Typeface pacificoFont = Typeface.createFromAsset(getAssets(), "fonts/pacifico.ttf");
         mAppNameTextView.setTypeface(pacificoFont);
         mFindRestaurantsButton.setOnClickListener(this);
+        mSavedRestaurantsButton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         if (v == mFindRestaurantsButton) {
-            String location = mZipCode.getText().toString();
             Intent restaurantIntent = new Intent(MainActivity.this, RestaurantsListActivity.class);
-            restaurantIntent.putExtra("locationZipCode", location);
             startActivity(restaurantIntent);
+        }
+        if(v == mSavedRestaurantsButton) {
+            Intent intent = new Intent(MainActivity.this, SavedRestaurantListActivity.class);
+            startActivity(intent);
         }
     }
 }
